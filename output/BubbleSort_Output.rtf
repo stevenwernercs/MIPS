@@ -1,0 +1,1992 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1187\cocoasubrtf370
+{\fonttbl\f0\fnil\fcharset0 Monaco;}
+{\colortbl;\red255\green255\blue255;\red0\green200\blue125;\red243\green235\blue0;}
+\margl1440\margr1440\vieww17800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720
+
+\f0\fs22 \cf0 Steven Werner\
+Arch II\
+80063971\
+\
+\
+Below is the output of a bubble sort algorithm.\
+Correct Machine code is generated and used by the program.\
+this the arguments are set to sort the first 3 elements of the array in the stack.\
+\
+\pard\pardeftab720
+\cf0 ________________________________________________________________________________________________________________\
+\pard\pardeftab720
+\cf0 \
+\
+\
+Enter the filepath and name of the file you want to run:\
+\pard\pardeftab720
+\cf2 sort.txt\cf0 \
+warning: line 43, no args. disregaurding line:  	\cf3 \cb0 [no ops for pipeline not to stop when reach the end]\cf0 \cb1 \
+	\
+warning: line 44, no args. disregaurding line:	\cf3 \cb0 [no ops for pipeline not to stop when reach the end]\cf0 \cb1 \
+\
+	\
+	Rop Rd, Rt, Rs                         |---OpCode--|-src Rs--|-src Rt--|-dest Rd-|--shamt--|---funct---|\
+	Iop Rt, Rs, int                        |---OpCode--|-src Rs--|-dest Rt-|-------------Integer-----------|\
+	Jop jump_number                        |---OpCode--|------computed_address_excluding_leading_4_bits----|\
+\
+0	start:\
+	add  $a0, $zero, $zero                  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0\
+1	addi $a1, $zero, 3                      0 0 1 0 0 0 0 0 0 0 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1\
+2	sort:\
+	addi $sp,$sp, -20                       0 0 1 0 0 0 1 1 1 0 1 1 1 1 0 1 1 1 1 1 1 1 1 1 1 1 1 0 1 1 0 0\
+3	sw $ra, 16($sp)                         1 0 1 0 1 1 1 1 1 0 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0\
+4	sw $s3,12($sp)                          1 0 1 0 1 1 1 1 1 0 1 1 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0\
+5	sw $s2, 8($sp)                          1 0 1 0 1 1 1 1 1 0 1 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0\
+6	sw $s1, 4($sp)                          1 0 1 0 1 1 1 1 1 0 1 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0\
+7	sw $s0, 0($sp)                          1 0 1 0 1 1 1 1 1 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+8	move $s2, $a0                           0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0\
+9	move $s3, $a1                           0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 1 0 0 1 1 0 0 0 0 0 1 0 0 0 0 0\
+10	move $s0, $zero                         0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0\
+11	for1tst:\
+	slt  $t0, $s0, $s3                      0 0 0 0 0 0 1 0 0 1 1 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 0 1 0 1 0\
+12	beq  $t0, $zero, exit1                  0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 0 1\
+13	addi $s1, $s0, -1                       0 0 1 0 0 0 1 0 0 0 0 1 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\
+14	for2tst:\
+	slti $t0, $s1, 0                        0 0 1 0 1 0 1 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+15	bne  $t0, $zero, exit2                  0 0 0 1 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 1 1\
+16	sll  $t1, $s1, 2                        0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0 1 0 0 1 0 0 0 1 0 0 0 0 0 0 0\
+17	add  $t2, $s2, $t1                      0 0 0 0 0 0 0 1 0 0 1 1 0 0 1 0 0 1 0 1 0 0 0 0 0 0 1 0 0 0 0 0\
+18	lw   $t3, 0($t2)                        1 0 0 0 1 1 0 1 0 1 0 0 1 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+19	lw   $t4, 4($t2)                        1 0 0 0 1 1 0 1 0 1 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0\
+20	slt  $t0, $t4, $t3                      0 0 0 0 0 0 0 1 0 1 1 0 1 1 0 0 0 1 0 0 0 0 0 0 0 0 1 0 1 0 1 0\
+21	beq  $t0, $zero, exit2                  0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 1 1\
+22	move $a0, $s2                           0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0\
+23	move $a1, $s1                           0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0 0 1 0 1 0 0 0 0 0 1 0 0 0 0 0\
+24	jal  swap                               0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 0\
+25	addi $s1, $s1, -1                       0 0 1 0 0 0 1 0 0 0 1 1 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\
+26	j    for2tst                            0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 0\
+27	exit2:\
+	addi $s0, $s0, 1                        0 0 1 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1\
+28	j    for1tst                            0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 1\
+29	exit1:\
+	lw $s0, 0($sp)                          1 0 0 0 1 1 1 1 1 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+30	lw $s1, 4($sp)                          1 0 0 0 1 1 1 1 1 0 1 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0\
+31	lw $s2, 8($sp)                          1 0 0 0 1 1 1 1 1 0 1 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0\
+32	lw $s3,12($sp)                          1 0 0 0 1 1 1 1 1 0 1 1 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0\
+33	lw $ra,16($sp)                          1 0 0 0 1 1 1 1 1 0 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0\
+34	addi $sp,$sp, 20                        0 0 1 0 0 0 1 1 1 0 1 1 1 1 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0 1 0 0\
+35	jr $ra                                  0 0 0 0 0 0 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0\
+36	swap:\
+	sll $t1, $a1, 2                         0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 0 1 0 0 1 0 0 0 1 0 0 0 0 0 0 0\
+37	add $t1, $a0, $t1                       0 0 0 0 0 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 1 0 0 0 0 0 1 0 0 0 0 0\
+38	lw $t0, 0($t1)                          1 0 0 0 1 1 0 1 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+39	lw $t2, 4($t1)                          1 0 0 0 1 1 0 1 0 0 1 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0\
+40	sw $t2, 0($t1)                          1 0 1 0 1 1 0 1 0 0 1 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+41	sw $t0, 4($t1)                          1 0 1 0 1 1 0 1 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0\
+42	jr $ra                                  0 0 0 0 0 0 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0\
+43	                                        0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+44	                                        0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	0  0  0  0  0  0  0  0 \
+	0  0  0  0  0  0  0  0 \
+	0  0  0  0  0  256  0  2147483647 \
+\
+\
+\
+THIS IS THE BEGINNING!\
+\
+The Stack @ start:\
+ 2 1 100 0 3 5 52 92 31 82 12 29 61 45 72 57 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	0  0  0  0  0  0  0  0 \
+	0  0  0  0  0  0  0  0 \
+	0  0  0  0  0  256  0  2147483647 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 0\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 0\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 0\
+	no WB\
+\
+0	start:\
+	add  $a0, $zero, $zero                  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	0  0  0  0  0  0  0  0 \
+	0  0  0  0  0  0  0  0 \
+	0  0  0  0  0  256  0  2147483647 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 4		pc: 1\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 0\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 0\
+	no WB\
+\
+1	addi $a1, $zero, 3                      0 0 1 0 0 0 0 0 0 0 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	0  0  0  0  0  0  0  0 \
+	0  0  0  0  0  0  0  0 \
+	0  0  0  0  0  256  0  2147483647 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 3	writeRegNum: 5		pc: 2\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 4	pc: 1\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 0\
+	no WB\
+\
+2	sort:\
+	addi $sp,$sp, -20                       0 0 1 0 0 0 1 1 1 0 1 1 1 1 0 1 1 1 1 1 1 1 1 1 1 1 1 0 1 1 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	0  0  0  0  0  0  0  0 \
+	0  0  0  0  0  0  0  0 \
+	0  0  0  0  0  256  0  2147483647 \
+\
+	Instruction Decode:	sourceRegNum1: 29	sourceRegNum2: 0	intToSignExtend: -20	writeRegNum: 29		pc: 3\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 3	regNumToWrite: 5	pc: 2\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 4		pc: 1\
+	no WB\
+\
+3	sw $ra, 16($sp)                         1 0 1 0 1 1 1 1 1 0 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	0  0  0  0  0  0  0  0 \
+	0  0  0  0  0  0  0  0 \
+	0  0  0  0  0  256  0  2147483647 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 3\
+	Execute:		source1value: 256		source2value: 0		intToSignExted: -20	regNumToWrite: 29	pc: 3\
+	Memory:			ResultValue: 3		branchPC: 3					writeBackReg: 5		pc: 2\
+	WriteBack:		writeReg: 4	writeValue: 0	BranchPC: -1\
+\
+\
+3	sw $ra, 16($sp)                         1 0 1 0 1 1 1 1 1 0 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	0  0  0  0  0  0  0  0 \
+	0  0  0  0  0  0  0  0 \
+	0  0  0  0  0  256  0  2147483647 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 3\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 3\
+	Memory:			ResultValue: 236		branchPC: -20					writeBackReg: 29		pc: 3\
+	WriteBack:		writeReg: 5	writeValue: 3	BranchPC: -1\
+\
+\
+3	sw $ra, 16($sp)                         1 0 1 0 1 1 1 1 1 0 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	0  0  0  0  0  0  0  0 \
+	0  0  0  0  0  0  0  0 \
+	0  0  0  0  0  256  0  2147483647 \
+\
+	Instruction Decode:	sourceRegNum1: 29	sourceRegNum2: 0	intToSignExtend: 16	writeRegNum: 31		pc: 4\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 3\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 3\
+	WriteBack:		writeReg: 29	writeValue: 236	BranchPC: -1\
+\
+\
+4	sw $s3,12($sp)                          1 0 1 0 1 1 1 1 1 0 1 1 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	0  0  0  0  0  0  0  0 \
+	0  0  0  0  0  0  0  0 \
+	0  0  0  0  0  236  0  2147483647 \
+\
+	Instruction Decode:	sourceRegNum1: 29	sourceRegNum2: 0	intToSignExtend: 12	writeRegNum: 19		pc: 5\
+	Execute:		source1value: 236		source2value: 0		intToSignExted: 16	regNumToWrite: 2147483647	pc: 4\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 3\
+	no WB\
+\
+5	sw $s2, 8($sp)                          1 0 1 0 1 1 1 1 1 0 1 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	0  0  0  0  0  0  0  0 \
+	0  0  0  0  0  0  0  0 \
+	0  0  0  0  0  236  0  2147483647 \
+\
+	Instruction Decode:	sourceRegNum1: 29	sourceRegNum2: 0	intToSignExtend: 8	writeRegNum: 18		pc: 6\
+	Execute:		source1value: 236		source2value: 0		intToSignExted: 12	regNumToWrite: 0	pc: 5\
+	Memory:			ResultValue: 252		branchPC: 16					writeBackReg: 2147483647		pc: 4\
+	no WB\
+\
+6	sw $s1, 4($sp)                          1 0 1 0 1 1 1 1 1 0 1 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	0  0  0  0  0  0  0  0 \
+	0  0  0  0  0  0  0  0 \
+	0  0  0  0  0  236  0  2147483647 \
+\
+	Instruction Decode:	sourceRegNum1: 29	sourceRegNum2: 0	intToSignExtend: 4	writeRegNum: 17		pc: 7\
+	Execute:		source1value: 236		source2value: 0		intToSignExted: 8	regNumToWrite: 0	pc: 6\
+	Memory:			ResultValue: 248		branchPC: 12					writeBackReg: 0		pc: 5\
+	no WB\
+\
+7	sw $s0, 0($sp)                          1 0 1 0 1 1 1 1 1 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	0  0  0  0  0  0  0  0 \
+	0  0  0  0  0  0  0  0 \
+	0  0  0  0  0  236  0  2147483647 \
+\
+	Instruction Decode:	sourceRegNum1: 29	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 16		pc: 8\
+	Execute:		source1value: 236		source2value: 0		intToSignExted: 4	regNumToWrite: 0	pc: 7\
+	Memory:			ResultValue: 244		branchPC: 8					writeBackReg: 0		pc: 6\
+	no WB\
+\
+8	move $s2, $a0                           0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	0  0  0  0  0  0  0  0 \
+	0  0  0  0  0  0  0  0 \
+	0  0  0  0  0  236  0  2147483647 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 4	intToSignExtend: 0	writeRegNum: 18		pc: 9\
+	Execute:		source1value: 236		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 8\
+	Memory:			ResultValue: 240		branchPC: 4					writeBackReg: 0		pc: 7\
+	no WB\
+\
+9	move $s3, $a1                           0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 1 0 0 1 1 0 0 0 0 0 1 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	0  0  0  0  0  0  0  0 \
+	0  0  0  0  0  0  0  0 \
+	0  0  0  0  0  236  0  2147483647 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 5	intToSignExtend: 0	writeRegNum: 19		pc: 10\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 18	pc: 9\
+	Memory:			ResultValue: 236		branchPC: 0					writeBackReg: 0		pc: 8\
+	no WB\
+\
+10	move $s0, $zero                         0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	0  0  0  0  0  0  0  0 \
+	0  0  0  0  0  0  0  0 \
+	0  0  0  0  0  236  0  2147483647 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 16		pc: 11\
+	Execute:		source1value: 0		source2value: 3		intToSignExted: 0	regNumToWrite: 19	pc: 10\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 18		pc: 9\
+	no WB\
+\
+11	for1tst:\
+	slt  $t0, $s0, $s3                      0 0 0 0 0 0 1 0 0 1 1 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 0 1 0 1 0\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	0  0  0  0  0  0  0  0 \
+	0  0  0  0  0  0  0  0 \
+	0  0  0  0  0  236  0  2147483647 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 11\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 16	pc: 11\
+	Memory:			ResultValue: 3		branchPC: 0					writeBackReg: 19		pc: 10\
+	WriteBack:		writeReg: 18	writeValue: 0	BranchPC: -1\
+\
+\
+11	for1tst:\
+	slt  $t0, $s0, $s3                      0 0 0 0 0 0 1 0 0 1 1 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 0 1 0 1 0\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	0  0  0  0  0  0  0  0 \
+	0  0  0  0  0  0  0  0 \
+	0  0  0  0  0  236  0  2147483647 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 11\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 11\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 16		pc: 11\
+	WriteBack:		writeReg: 19	writeValue: 3	BranchPC: -1\
+\
+\
+11	for1tst:\
+	slt  $t0, $s0, $s3                      0 0 0 0 0 0 1 0 0 1 1 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 0 1 0 1 0\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	0  0  0  0  0  0  0  0 \
+	0  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  2147483647 \
+\
+	Instruction Decode:	sourceRegNum1: 19	sourceRegNum2: 16	intToSignExtend: 0	writeRegNum: 8		pc: 12\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 11\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 11\
+	WriteBack:		writeReg: 16	writeValue: 0	BranchPC: -1\
+\
+\
+12	beq  $t0, $zero, exit1                  0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 0 1\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	0  0  0  0  0  0  0  0 \
+	0  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  2147483647 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 12\
+	Execute:		source1value: 3		source2value: 0		intToSignExted: 0	regNumToWrite: 8	pc: 12\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 11\
+	no WB\
+\
+12	beq  $t0, $zero, exit1                  0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 0 1\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	0  0  0  0  0  0  0  0 \
+	0  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  2147483647 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 12\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 12\
+	Memory:			ResultValue: 1		branchPC: 0					writeBackReg: 8		pc: 12\
+	no WB\
+\
+12	beq  $t0, $zero, exit1                  0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 0 1\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	0  0  0  0  0  0  0  0 \
+	0  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  2147483647 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 29	writeRegNum: 8		pc: 13\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 12\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 12\
+	WriteBack:		writeReg: 8	writeValue: 1	BranchPC: -1\
+\
+\
+13	addi $s1, $s0, -1                       0 0 1 0 0 0 1 0 0 0 0 1 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	1  0  0  0  0  0  0  0 \
+	0  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  2147483647 \
+\
+	Instruction Decode:	sourceRegNum1: 16	sourceRegNum2: 0	intToSignExtend: -1	writeRegNum: 17		pc: 14\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 29	regNumToWrite: 1	pc: 13\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 12\
+	no WB\
+\
+14	for2tst:\
+	slti $t0, $s1, 0                        0 0 1 0 1 0 1 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	1  0  0  0  0  0  0  0 \
+	0  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  2147483647 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 14\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: -1	regNumToWrite: 17	pc: 14\
+	Memory:			ResultValue: 0		branchPC: 29					writeBackReg: 1		pc: 13\
+	no WB\
+\
+14	for2tst:\
+	slti $t0, $s1, 0                        0 0 1 0 1 0 1 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	1  0  0  0  0  0  0  0 \
+	0  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  2147483647 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 14\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 14\
+	Memory:			ResultValue: -1		branchPC: -1					writeBackReg: 17		pc: 14\
+	no WB\
+\
+14	for2tst:\
+	slti $t0, $s1, 0                        0 0 1 0 1 0 1 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	1  0  0  0  0  0  0  0 \
+	0  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  2147483647 \
+\
+	Instruction Decode:	sourceRegNum1: 17	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 8		pc: 15\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 14\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 14\
+	WriteBack:		writeReg: 17	writeValue: -1	BranchPC: -1\
+\
+\
+15	bne  $t0, $zero, exit2                  0 0 0 1 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 1 1\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	1  0  0  0  0  0  0  0 \
+	0  -1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  2147483647 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 15\
+	Execute:		source1value: -1		source2value: 0		intToSignExted: 0	regNumToWrite: 8	pc: 15\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 14\
+	no WB\
+\
+15	bne  $t0, $zero, exit2                  0 0 0 1 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 1 1\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	1  0  0  0  0  0  0  0 \
+	0  -1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  2147483647 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 15\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 15\
+	Memory:			ResultValue: 1		branchPC: 0					writeBackReg: 8		pc: 15\
+	no WB\
+\
+15	bne  $t0, $zero, exit2                  0 0 0 1 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 1 1\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	1  0  0  0  0  0  0  0 \
+	0  -1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  2147483647 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 27	writeRegNum: 8		pc: 16\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 15\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 15\
+	WriteBack:		writeReg: 8	writeValue: 1	BranchPC: -1\
+\
+\
+16	sll  $t1, $s1, 2                        0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0 1 0 0 1 0 0 0 1 0 0 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	1  0  0  0  0  0  0  0 \
+	0  -1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  2147483647 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 17	intToSignExtend: 0	writeRegNum: 9		pc: 17\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 27	regNumToWrite: 1	pc: 16\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 15\
+	no WB\
+\
+17	add  $t2, $s2, $t1                      0 0 0 0 0 0 0 1 0 0 1 1 0 0 1 0 0 1 0 1 0 0 0 0 0 0 1 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	1  0  0  0  0  0  0  0 \
+	0  -1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  2147483647 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 17\
+	Execute:		source1value: 0		source2value: -1		intToSignExted: 0	regNumToWrite: 9	pc: 17\
+	Memory:			ResultValue: 1		branchPC: 27					writeBackReg: 1		pc: 16\
+	no WB\
+\
+17	add  $t2, $s2, $t1                      0 0 0 0 0 0 0 1 0 0 1 1 0 0 1 0 0 1 0 1 0 0 0 0 0 0 1 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	1  0  0  0  0  0  0  0 \
+	0  -1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  2147483647 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 17\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 17\
+	Memory:			ResultValue: -4		branchPC: 0					writeBackReg: 9		pc: 17\
+	WriteBack:		writeReg: 0	writeValue: 0	BranchPC: 27\
+\
+\
+Pipeline Cleared!!\
+\
+27	exit2:\
+	addi $s0, $s0, 1                        0 0 1 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	1  0  0  0  0  0  0  0 \
+	0  -1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  2147483647 \
+\
+	Instruction Decode:	sourceRegNum1: 16	sourceRegNum2: 0	intToSignExtend: 1	writeRegNum: 16		pc: 28\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 0\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 0\
+	no WB\
+\
+28	j    for1tst                            0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 1\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	1  0  0  0  0  0  0  0 \
+	0  -1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  2147483647 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 28	writeRegNum: 31		pc: 11\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 1	regNumToWrite: 16	pc: 28\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 0\
+	no WB\
+\
+11	for1tst:\
+	slt  $t0, $s0, $s3                      0 0 0 0 0 0 1 0 0 1 1 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 0 1 0 1 0\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	1  0  0  0  0  0  0  0 \
+	0  -1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  2147483647 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 11\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 28	regNumToWrite: 31	pc: 28\
+	Memory:			ResultValue: 1		branchPC: 1					writeBackReg: 16		pc: 28\
+	no WB\
+\
+11	for1tst:\
+	slt  $t0, $s0, $s3                      0 0 0 0 0 0 1 0 0 1 1 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 0 1 0 1 0\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	1  0  0  0  0  0  0  0 \
+	0  -1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  2147483647 \
+\
+	Instruction Decode:	sourceRegNum1: 19	sourceRegNum2: 16	intToSignExtend: 0	writeRegNum: 8		pc: 12\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 11\
+	Memory:			ResultValue: 1		branchPC: 28					writeBackReg: 31		pc: 28\
+	WriteBack:		writeReg: 16	writeValue: 1	BranchPC: -1\
+\
+\
+12	beq  $t0, $zero, exit1                  0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 0 1\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	1  0  0  0  0  0  0  0 \
+	1  -1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  2147483647 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 12\
+	Execute:		source1value: 3		source2value: 1		intToSignExted: 0	regNumToWrite: 8	pc: 12\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 11\
+	WriteBack:		writeReg: 31	writeValue: 1	BranchPC: -1\
+\
+\
+12	beq  $t0, $zero, exit1                  0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 0 1\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	1  0  0  0  0  0  0  0 \
+	1  -1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 12\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 12\
+	Memory:			ResultValue: 1		branchPC: 0					writeBackReg: 8		pc: 12\
+	no WB\
+\
+12	beq  $t0, $zero, exit1                  0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 0 1\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	1  0  0  0  0  0  0  0 \
+	1  -1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 29	writeRegNum: 8		pc: 13\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 12\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 12\
+	WriteBack:		writeReg: 8	writeValue: 1	BranchPC: -1\
+\
+\
+13	addi $s1, $s0, -1                       0 0 1 0 0 0 1 0 0 0 0 1 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	1  0  0  0  0  0  0  0 \
+	1  -1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 16	sourceRegNum2: 0	intToSignExtend: -1	writeRegNum: 17		pc: 14\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 29	regNumToWrite: 1	pc: 13\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 12\
+	no WB\
+\
+14	for2tst:\
+	slti $t0, $s1, 0                        0 0 1 0 1 0 1 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	1  0  0  0  0  0  0  0 \
+	1  -1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 14\
+	Execute:		source1value: 1		source2value: 0		intToSignExted: -1	regNumToWrite: 17	pc: 14\
+	Memory:			ResultValue: 0		branchPC: 29					writeBackReg: 1		pc: 13\
+	no WB\
+\
+14	for2tst:\
+	slti $t0, $s1, 0                        0 0 1 0 1 0 1 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	1  0  0  0  0  0  0  0 \
+	1  -1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 14\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 14\
+	Memory:			ResultValue: 0		branchPC: -1					writeBackReg: 17		pc: 14\
+	no WB\
+\
+14	for2tst:\
+	slti $t0, $s1, 0                        0 0 1 0 1 0 1 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	1  0  0  0  0  0  0  0 \
+	1  -1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 17	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 8		pc: 15\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 14\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 14\
+	WriteBack:		writeReg: 17	writeValue: 0	BranchPC: -1\
+\
+\
+15	bne  $t0, $zero, exit2                  0 0 0 1 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 1 1\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	1  0  0  0  0  0  0  0 \
+	1  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 15\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 8	pc: 15\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 14\
+	no WB\
+\
+15	bne  $t0, $zero, exit2                  0 0 0 1 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 1 1\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	1  0  0  0  0  0  0  0 \
+	1  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 15\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 15\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 8		pc: 15\
+	no WB\
+\
+15	bne  $t0, $zero, exit2                  0 0 0 1 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 1 1\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	1  0  0  0  0  0  0  0 \
+	1  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 27	writeRegNum: 8		pc: 16\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 15\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 15\
+	WriteBack:		writeReg: 8	writeValue: 0	BranchPC: -1\
+\
+\
+16	sll  $t1, $s1, 2                        0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0 1 0 0 1 0 0 0 1 0 0 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	0  0  0  0  0  0  0  0 \
+	1  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 17	intToSignExtend: 0	writeRegNum: 9		pc: 17\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 27	regNumToWrite: 0	pc: 16\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 15\
+	no WB\
+\
+17	add  $t2, $s2, $t1                      0 0 0 0 0 0 0 1 0 0 1 1 0 0 1 0 0 1 0 1 0 0 0 0 0 0 1 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	0  0  0  0  0  0  0  0 \
+	1  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 17\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 9	pc: 17\
+	Memory:			ResultValue: 0		branchPC: 27					writeBackReg: 0		pc: 16\
+	no WB\
+\
+17	add  $t2, $s2, $t1                      0 0 0 0 0 0 0 1 0 0 1 1 0 0 1 0 0 1 0 1 0 0 0 0 0 0 1 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	0  0  0  0  0  0  0  0 \
+	1  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 17\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 17\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 9		pc: 17\
+	no WB\
+\
+17	add  $t2, $s2, $t1                      0 0 0 0 0 0 0 1 0 0 1 1 0 0 1 0 0 1 0 1 0 0 0 0 0 0 1 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	0  0  0  0  0  0  0  0 \
+	1  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 9	sourceRegNum2: 18	intToSignExtend: 0	writeRegNum: 10		pc: 18\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 17\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 17\
+	WriteBack:		writeReg: 9	writeValue: 0	BranchPC: -1\
+\
+\
+18	lw   $t3, 0($t2)                        1 0 0 0 1 1 0 1 0 1 0 0 1 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	0  0  0  0  0  0  0  0 \
+	1  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 18\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 10	pc: 18\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 17\
+	no WB\
+\
+18	lw   $t3, 0($t2)                        1 0 0 0 1 1 0 1 0 1 0 0 1 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	0  0  0  0  0  0  0  0 \
+	1  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 18\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 18\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 10		pc: 18\
+	no WB\
+\
+18	lw   $t3, 0($t2)                        1 0 0 0 1 1 0 1 0 1 0 0 1 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	0  0  0  0  0  0  0  0 \
+	1  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 10	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 11		pc: 19\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 18\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 18\
+	WriteBack:		writeReg: 10	writeValue: 0	BranchPC: -1\
+\
+\
+19	lw   $t4, 4($t2)                        1 0 0 0 1 1 0 1 0 1 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	0  0  0  0  0  0  0  0 \
+	1  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 10	sourceRegNum2: 0	intToSignExtend: 4	writeRegNum: 12		pc: 20\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 11	pc: 19\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 18\
+	no WB\
+\
+20	slt  $t0, $t4, $t3                      0 0 0 0 0 0 0 1 0 1 1 0 1 1 0 0 0 1 0 0 0 0 0 0 0 0 1 0 1 0 1 0\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	0  0  0  0  0  0  0  0 \
+	1  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 20\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 4	regNumToWrite: 12	pc: 20\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 11		pc: 19\
+	no WB\
+\
+20	slt  $t0, $t4, $t3                      0 0 0 0 0 0 0 1 0 1 1 0 1 1 0 0 0 1 0 0 0 0 0 0 0 0 1 0 1 0 1 0\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	0  0  0  0  0  0  0  0 \
+	1  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 20\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 20\
+	Memory:			ResultValue: 4		branchPC: 4					writeBackReg: 12		pc: 20\
+	WriteBack:		writeReg: 11	writeValue: 2	BranchPC: -1\
+\
+\
+20	slt  $t0, $t4, $t3                      0 0 0 0 0 0 0 1 0 1 1 0 1 1 0 0 0 1 0 0 0 0 0 0 0 0 1 0 1 0 1 0\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	0  0  0  2  0  0  0  0 \
+	1  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 11	sourceRegNum2: 12	intToSignExtend: 0	writeRegNum: 8		pc: 21\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 20\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 20\
+	WriteBack:		writeReg: 12	writeValue: 1	BranchPC: -1\
+\
+\
+21	beq  $t0, $zero, exit2                  0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 1 1\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	0  0  0  2  1  0  0  0 \
+	1  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 21\
+	Execute:		source1value: 2		source2value: 1		intToSignExted: 0	regNumToWrite: 8	pc: 21\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 20\
+	no WB\
+\
+21	beq  $t0, $zero, exit2                  0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 1 1\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	0  0  0  2  1  0  0  0 \
+	1  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 21\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 21\
+	Memory:			ResultValue: 1		branchPC: 0					writeBackReg: 8		pc: 21\
+	no WB\
+\
+21	beq  $t0, $zero, exit2                  0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 1 1\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	0  0  0  2  1  0  0  0 \
+	1  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 27	writeRegNum: 8		pc: 22\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 21\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 21\
+	WriteBack:		writeReg: 8	writeValue: 1	BranchPC: -1\
+\
+\
+22	move $a0, $s2                           0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	1  0  0  2  1  0  0  0 \
+	1  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 18	intToSignExtend: 0	writeRegNum: 4		pc: 23\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 27	regNumToWrite: 1	pc: 22\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 21\
+	no WB\
+\
+23	move $a1, $s1                           0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0 0 1 0 1 0 0 0 0 0 1 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	1  0  0  2  1  0  0  0 \
+	1  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 17	intToSignExtend: 0	writeRegNum: 5		pc: 24\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 4	pc: 23\
+	Memory:			ResultValue: 0		branchPC: 27					writeBackReg: 1		pc: 22\
+	no WB\
+\
+24	jal  swap                               0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 0\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	1  0  0  2  1  0  0  0 \
+	1  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 24	writeRegNum: 31		pc: 36\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 5	pc: 24\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 4		pc: 23\
+	no WB\
+\
+36	swap:\
+	sll $t1, $a1, 2                         0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 0 1 0 0 1 0 0 0 1 0 0 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	1  0  0  2  1  0  0  0 \
+	1  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 36\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 24	regNumToWrite: 31	pc: 24\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 5		pc: 24\
+	WriteBack:		writeReg: 4	writeValue: 0	BranchPC: -1\
+\
+\
+36	swap:\
+	sll $t1, $a1, 2                         0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 0 1 0 0 1 0 0 0 1 0 0 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  3  0  0 \
+	1  0  0  2  1  0  0  0 \
+	1  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 5	intToSignExtend: 0	writeRegNum: 9		pc: 37\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 36\
+	Memory:			ResultValue: 25		branchPC: 24					writeBackReg: 31		pc: 24\
+	WriteBack:		writeReg: 5	writeValue: 0	BranchPC: -1\
+\
+\
+37	add $t1, $a0, $t1                       0 0 0 0 0 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 1 0 0 0 0 0 1 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	1  0  0  2  1  0  0  0 \
+	1  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 37\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 9	pc: 37\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 36\
+	WriteBack:		writeReg: 31	writeValue: 25	BranchPC: -1\
+\
+\
+37	add $t1, $a0, $t1                       0 0 0 0 0 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 1 0 0 0 0 0 1 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	1  0  0  2  1  0  0  0 \
+	1  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  25 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 37\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 37\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 9		pc: 37\
+	no WB\
+\
+37	add $t1, $a0, $t1                       0 0 0 0 0 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 1 0 0 0 0 0 1 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	1  0  0  2  1  0  0  0 \
+	1  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  25 \
+\
+	Instruction Decode:	sourceRegNum1: 9	sourceRegNum2: 4	intToSignExtend: 0	writeRegNum: 9		pc: 38\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 37\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 37\
+	WriteBack:		writeReg: 9	writeValue: 0	BranchPC: -1\
+\
+\
+38	lw $t0, 0($t1)                          1 0 0 0 1 1 0 1 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	1  0  0  2  1  0  0  0 \
+	1  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  25 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 38\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 9	pc: 38\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 37\
+	no WB\
+\
+38	lw $t0, 0($t1)                          1 0 0 0 1 1 0 1 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	1  0  0  2  1  0  0  0 \
+	1  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  25 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 38\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 38\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 9		pc: 38\
+	no WB\
+\
+38	lw $t0, 0($t1)                          1 0 0 0 1 1 0 1 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	1  0  0  2  1  0  0  0 \
+	1  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  25 \
+\
+	Instruction Decode:	sourceRegNum1: 9	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 8		pc: 39\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 38\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 38\
+	WriteBack:		writeReg: 9	writeValue: 0	BranchPC: -1\
+\
+\
+39	lw $t2, 4($t1)                          1 0 0 0 1 1 0 1 0 0 1 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	1  0  0  2  1  0  0  0 \
+	1  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  25 \
+\
+	Instruction Decode:	sourceRegNum1: 9	sourceRegNum2: 0	intToSignExtend: 4	writeRegNum: 10		pc: 40\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 8	pc: 39\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 38\
+	no WB\
+\
+40	sw $t2, 0($t1)                          1 0 1 0 1 1 0 1 0 0 1 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	1  0  0  2  1  0  0  0 \
+	1  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  25 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 40\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 4	regNumToWrite: 10	pc: 40\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 8		pc: 39\
+	no WB\
+\
+40	sw $t2, 0($t1)                          1 0 1 0 1 1 0 1 0 0 1 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	1  0  0  2  1  0  0  0 \
+	1  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  25 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 40\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 40\
+	Memory:			ResultValue: 4		branchPC: 4					writeBackReg: 10		pc: 40\
+	WriteBack:		writeReg: 8	writeValue: 2	BranchPC: -1\
+\
+\
+40	sw $t2, 0($t1)                          1 0 1 0 1 1 0 1 0 0 1 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	2  0  0  2  1  0  0  0 \
+	1  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  25 \
+\
+	Instruction Decode:	sourceRegNum1: 9	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 10		pc: 41\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 40\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 40\
+	WriteBack:		writeReg: 10	writeValue: 1	BranchPC: -1\
+\
+\
+41	sw $t0, 4($t1)                          1 0 1 0 1 1 0 1 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	2  0  1  2  1  0  0  0 \
+	1  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  25 \
+\
+	Instruction Decode:	sourceRegNum1: 9	sourceRegNum2: 0	intToSignExtend: 4	writeRegNum: 8		pc: 42\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 1	pc: 41\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 40\
+	no WB\
+\
+42	jr $ra                                  0 0 0 0 0 0 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	2  0  1  2  1  0  0  0 \
+	1  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  25 \
+\
+	Instruction Decode:	sourceRegNum1: 31	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 43\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 4	regNumToWrite: 2	pc: 42\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 1		pc: 41\
+	no WB\
+\
+43	                                        0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	2  0  1  2  1  0  0  0 \
+	1  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  25 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 44\
+	Execute:		source1value: 25		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 43\
+	Memory:			ResultValue: 4		branchPC: 4					writeBackReg: 2		pc: 42\
+	no WB\
+\
+25	addi $s1, $s1, -1                       0 0 1 0 0 0 1 0 0 0 1 1 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	2  0  1  2  1  0  0  0 \
+	1  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  25 \
+\
+	Instruction Decode:	sourceRegNum1: 17	sourceRegNum2: 0	intToSignExtend: -1	writeRegNum: 17		pc: 26\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 44\
+	Memory:			ResultValue: 25		branchPC: 0					writeBackReg: 0		pc: 43\
+	no WB\
+\
+26	j    for2tst                            0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	2  0  1  2  1  0  0  0 \
+	1  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  25 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 26	writeRegNum: 31		pc: 14\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: -1	regNumToWrite: 17	pc: 26\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 44\
+	WriteBack:		writeReg: 0	writeValue: 25	BranchPC: -1\
+\
+\
+14	for2tst:\
+	slti $t0, $s1, 0                        0 0 1 0 1 0 1 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+\
+Registers:\
+	25  0  0  0  0  0  0  0 \
+	2  0  1  2  1  0  0  0 \
+	1  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  25 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 14\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 26	regNumToWrite: 31	pc: 26\
+	Memory:			ResultValue: -1		branchPC: -1					writeBackReg: 17		pc: 26\
+	WriteBack:		writeReg: 0	writeValue: 0	BranchPC: -1\
+\
+\
+14	for2tst:\
+	slti $t0, $s1, 0                        0 0 1 0 1 0 1 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	2  0  1  2  1  0  0  0 \
+	1  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  25 \
+\
+	Instruction Decode:	sourceRegNum1: 17	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 8		pc: 15\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 14\
+	Memory:			ResultValue: 1		branchPC: 26					writeBackReg: 31		pc: 26\
+	WriteBack:		writeReg: 17	writeValue: -1	BranchPC: -1\
+\
+\
+15	bne  $t0, $zero, exit2                  0 0 0 1 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 1 1\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	2  0  1  2  1  0  0  0 \
+	1  -1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  25 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 15\
+	Execute:		source1value: -1		source2value: 0		intToSignExted: 0	regNumToWrite: 8	pc: 15\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 14\
+	WriteBack:		writeReg: 31	writeValue: 1	BranchPC: -1\
+\
+\
+15	bne  $t0, $zero, exit2                  0 0 0 1 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 1 1\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	2  0  1  2  1  0  0  0 \
+	1  -1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 15\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 15\
+	Memory:			ResultValue: 1		branchPC: 0					writeBackReg: 8		pc: 15\
+	no WB\
+\
+15	bne  $t0, $zero, exit2                  0 0 0 1 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 1 1\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	2  0  1  2  1  0  0  0 \
+	1  -1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 27	writeRegNum: 8		pc: 16\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 15\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 15\
+	WriteBack:		writeReg: 8	writeValue: 1	BranchPC: -1\
+\
+\
+16	sll  $t1, $s1, 2                        0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0 1 0 0 1 0 0 0 1 0 0 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	1  0  1  2  1  0  0  0 \
+	1  -1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 17	intToSignExtend: 0	writeRegNum: 9		pc: 17\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 27	regNumToWrite: 1	pc: 16\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 15\
+	no WB\
+\
+17	add  $t2, $s2, $t1                      0 0 0 0 0 0 0 1 0 0 1 1 0 0 1 0 0 1 0 1 0 0 0 0 0 0 1 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	1  0  1  2  1  0  0  0 \
+	1  -1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 17\
+	Execute:		source1value: 0		source2value: -1		intToSignExted: 0	regNumToWrite: 9	pc: 17\
+	Memory:			ResultValue: 1		branchPC: 27					writeBackReg: 1		pc: 16\
+	no WB\
+\
+17	add  $t2, $s2, $t1                      0 0 0 0 0 0 0 1 0 0 1 1 0 0 1 0 0 1 0 1 0 0 0 0 0 0 1 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	1  0  1  2  1  0  0  0 \
+	1  -1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 17\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 17\
+	Memory:			ResultValue: -4		branchPC: 0					writeBackReg: 9		pc: 17\
+	WriteBack:		writeReg: 0	writeValue: 0	BranchPC: 27\
+\
+\
+Pipeline Cleared!!\
+\
+27	exit2:\
+	addi $s0, $s0, 1                        0 0 1 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	1  0  1  2  1  0  0  0 \
+	1  -1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 16	sourceRegNum2: 0	intToSignExtend: 1	writeRegNum: 16		pc: 28\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 0\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 0\
+	no WB\
+\
+28	j    for1tst                            0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 1\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	1  0  1  2  1  0  0  0 \
+	1  -1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 28	writeRegNum: 31		pc: 11\
+	Execute:		source1value: 1		source2value: 0		intToSignExted: 1	regNumToWrite: 16	pc: 28\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 0\
+	no WB\
+\
+11	for1tst:\
+	slt  $t0, $s0, $s3                      0 0 0 0 0 0 1 0 0 1 1 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 0 1 0 1 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	1  0  1  2  1  0  0  0 \
+	1  -1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 11\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 28	regNumToWrite: 31	pc: 28\
+	Memory:			ResultValue: 2		branchPC: 1					writeBackReg: 16		pc: 28\
+	no WB\
+\
+11	for1tst:\
+	slt  $t0, $s0, $s3                      0 0 0 0 0 0 1 0 0 1 1 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 0 1 0 1 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	1  0  1  2  1  0  0  0 \
+	1  -1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 19	sourceRegNum2: 16	intToSignExtend: 0	writeRegNum: 8		pc: 12\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 11\
+	Memory:			ResultValue: 1		branchPC: 28					writeBackReg: 31		pc: 28\
+	WriteBack:		writeReg: 16	writeValue: 2	BranchPC: -1\
+\
+\
+12	beq  $t0, $zero, exit1                  0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 0 1\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	1  0  1  2  1  0  0  0 \
+	2  -1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 12\
+	Execute:		source1value: 3		source2value: 2		intToSignExted: 0	regNumToWrite: 8	pc: 12\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 11\
+	WriteBack:		writeReg: 31	writeValue: 1	BranchPC: -1\
+\
+\
+12	beq  $t0, $zero, exit1                  0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 0 1\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	1  0  1  2  1  0  0  0 \
+	2  -1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 12\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 12\
+	Memory:			ResultValue: 1		branchPC: 0					writeBackReg: 8		pc: 12\
+	no WB\
+\
+12	beq  $t0, $zero, exit1                  0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 0 1\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	1  0  1  2  1  0  0  0 \
+	2  -1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 29	writeRegNum: 8		pc: 13\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 12\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 12\
+	WriteBack:		writeReg: 8	writeValue: 1	BranchPC: -1\
+\
+\
+13	addi $s1, $s0, -1                       0 0 1 0 0 0 1 0 0 0 0 1 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	1  0  1  2  1  0  0  0 \
+	2  -1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 16	sourceRegNum2: 0	intToSignExtend: -1	writeRegNum: 17		pc: 14\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 29	regNumToWrite: 1	pc: 13\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 12\
+	no WB\
+\
+14	for2tst:\
+	slti $t0, $s1, 0                        0 0 1 0 1 0 1 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	1  0  1  2  1  0  0  0 \
+	2  -1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 14\
+	Execute:		source1value: 2		source2value: 0		intToSignExted: -1	regNumToWrite: 17	pc: 14\
+	Memory:			ResultValue: 0		branchPC: 29					writeBackReg: 1		pc: 13\
+	no WB\
+\
+14	for2tst:\
+	slti $t0, $s1, 0                        0 0 1 0 1 0 1 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	1  0  1  2  1  0  0  0 \
+	2  -1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 14\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 14\
+	Memory:			ResultValue: 1		branchPC: -1					writeBackReg: 17		pc: 14\
+	no WB\
+\
+14	for2tst:\
+	slti $t0, $s1, 0                        0 0 1 0 1 0 1 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	1  0  1  2  1  0  0  0 \
+	2  -1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 17	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 8		pc: 15\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 14\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 14\
+	WriteBack:		writeReg: 17	writeValue: 1	BranchPC: -1\
+\
+\
+15	bne  $t0, $zero, exit2                  0 0 0 1 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 1 1\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	1  0  1  2  1  0  0  0 \
+	2  1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 15\
+	Execute:		source1value: 1		source2value: 0		intToSignExted: 0	regNumToWrite: 8	pc: 15\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 14\
+	no WB\
+\
+15	bne  $t0, $zero, exit2                  0 0 0 1 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 1 1\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	1  0  1  2  1  0  0  0 \
+	2  1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 15\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 15\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 8		pc: 15\
+	no WB\
+\
+15	bne  $t0, $zero, exit2                  0 0 0 1 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 1 1\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	1  0  1  2  1  0  0  0 \
+	2  1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 27	writeRegNum: 8		pc: 16\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 15\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 15\
+	WriteBack:		writeReg: 8	writeValue: 0	BranchPC: -1\
+\
+\
+16	sll  $t1, $s1, 2                        0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0 1 0 0 1 0 0 0 1 0 0 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	0  0  1  2  1  0  0  0 \
+	2  1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 17	intToSignExtend: 0	writeRegNum: 9		pc: 17\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 27	regNumToWrite: 0	pc: 16\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 15\
+	no WB\
+\
+17	add  $t2, $s2, $t1                      0 0 0 0 0 0 0 1 0 0 1 1 0 0 1 0 0 1 0 1 0 0 0 0 0 0 1 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	0  0  1  2  1  0  0  0 \
+	2  1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 17\
+	Execute:		source1value: 0		source2value: 1		intToSignExted: 0	regNumToWrite: 9	pc: 17\
+	Memory:			ResultValue: 0		branchPC: 27					writeBackReg: 0		pc: 16\
+	no WB\
+\
+17	add  $t2, $s2, $t1                      0 0 0 0 0 0 0 1 0 0 1 1 0 0 1 0 0 1 0 1 0 0 0 0 0 0 1 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	0  0  1  2  1  0  0  0 \
+	2  1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 17\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 17\
+	Memory:			ResultValue: 4		branchPC: 0					writeBackReg: 9		pc: 17\
+	no WB\
+\
+17	add  $t2, $s2, $t1                      0 0 0 0 0 0 0 1 0 0 1 1 0 0 1 0 0 1 0 1 0 0 0 0 0 0 1 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	0  0  1  2  1  0  0  0 \
+	2  1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 9	sourceRegNum2: 18	intToSignExtend: 0	writeRegNum: 10		pc: 18\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 17\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 17\
+	WriteBack:		writeReg: 9	writeValue: 4	BranchPC: -1\
+\
+\
+18	lw   $t3, 0($t2)                        1 0 0 0 1 1 0 1 0 1 0 0 1 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	0  4  1  2  1  0  0  0 \
+	2  1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 18\
+	Execute:		source1value: 4		source2value: 0		intToSignExted: 0	regNumToWrite: 10	pc: 18\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 17\
+	no WB\
+\
+18	lw   $t3, 0($t2)                        1 0 0 0 1 1 0 1 0 1 0 0 1 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	0  4  1  2  1  0  0  0 \
+	2  1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 18\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 18\
+	Memory:			ResultValue: 4		branchPC: 0					writeBackReg: 10		pc: 18\
+	no WB\
+\
+18	lw   $t3, 0($t2)                        1 0 0 0 1 1 0 1 0 1 0 0 1 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	0  4  1  2  1  0  0  0 \
+	2  1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 10	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 11		pc: 19\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 18\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 18\
+	WriteBack:		writeReg: 10	writeValue: 4	BranchPC: -1\
+\
+\
+19	lw   $t4, 4($t2)                        1 0 0 0 1 1 0 1 0 1 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	0  4  4  2  1  0  0  0 \
+	2  1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 10	sourceRegNum2: 0	intToSignExtend: 4	writeRegNum: 12		pc: 20\
+	Execute:		source1value: 4		source2value: 0		intToSignExted: 0	regNumToWrite: 11	pc: 19\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 18\
+	no WB\
+\
+20	slt  $t0, $t4, $t3                      0 0 0 0 0 0 0 1 0 1 1 0 1 1 0 0 0 1 0 0 0 0 0 0 0 0 1 0 1 0 1 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	0  4  4  2  1  0  0  0 \
+	2  1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 20\
+	Execute:		source1value: 4		source2value: 0		intToSignExted: 4	regNumToWrite: 12	pc: 20\
+	Memory:			ResultValue: 4		branchPC: 0					writeBackReg: 11		pc: 19\
+	no WB\
+\
+20	slt  $t0, $t4, $t3                      0 0 0 0 0 0 0 1 0 1 1 0 1 1 0 0 0 1 0 0 0 0 0 0 0 0 1 0 1 0 1 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	0  4  4  2  1  0  0  0 \
+	2  1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 20\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 20\
+	Memory:			ResultValue: 8		branchPC: 4					writeBackReg: 12		pc: 20\
+	WriteBack:		writeReg: 11	writeValue: 2	BranchPC: -1\
+\
+\
+20	slt  $t0, $t4, $t3                      0 0 0 0 0 0 0 1 0 1 1 0 1 1 0 0 0 1 0 0 0 0 0 0 0 0 1 0 1 0 1 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	0  4  4  2  1  0  0  0 \
+	2  1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 11	sourceRegNum2: 12	intToSignExtend: 0	writeRegNum: 8		pc: 21\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 20\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 20\
+	WriteBack:		writeReg: 12	writeValue: 100	BranchPC: -1\
+\
+\
+21	beq  $t0, $zero, exit2                  0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 1 1\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	0  4  4  2  100  0  0  0 \
+	2  1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 21\
+	Execute:		source1value: 2		source2value: 100		intToSignExted: 0	regNumToWrite: 8	pc: 21\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 20\
+	no WB\
+\
+21	beq  $t0, $zero, exit2                  0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 1 1\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	0  4  4  2  100  0  0  0 \
+	2  1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 21\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 21\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 8		pc: 21\
+	no WB\
+\
+21	beq  $t0, $zero, exit2                  0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 1 1\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	0  4  4  2  100  0  0  0 \
+	2  1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 27	writeRegNum: 8		pc: 22\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 21\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 21\
+	WriteBack:		writeReg: 8	writeValue: 0	BranchPC: -1\
+\
+\
+22	move $a0, $s2                           0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	0  4  4  2  100  0  0  0 \
+	2  1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 18	intToSignExtend: 0	writeRegNum: 4		pc: 23\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 27	regNumToWrite: 0	pc: 22\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 21\
+	no WB\
+\
+23	move $a1, $s1                           0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0 0 1 0 1 0 0 0 0 0 1 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	0  4  4  2  100  0  0  0 \
+	2  1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 17	intToSignExtend: 0	writeRegNum: 5		pc: 24\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 4	pc: 23\
+	Memory:			ResultValue: 1		branchPC: 27					writeBackReg: 0		pc: 22\
+	no WB\
+\
+24	jal  swap                               0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	0  4  4  2  100  0  0  0 \
+	2  1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 24	writeRegNum: 31		pc: 36\
+	Execute:		source1value: 0		source2value: 1		intToSignExted: 0	regNumToWrite: 5	pc: 24\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 4		pc: 23\
+	WriteBack:		writeReg: 0	writeValue: 0	BranchPC: 27\
+\
+\
+Pipeline Cleared!!\
+\
+27	exit2:\
+	addi $s0, $s0, 1                        0 0 1 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	0  4  4  2  100  0  0  0 \
+	2  1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 16	sourceRegNum2: 0	intToSignExtend: 1	writeRegNum: 16		pc: 28\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 0\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 0\
+	no WB\
+\
+28	j    for1tst                            0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 1\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	0  4  4  2  100  0  0  0 \
+	2  1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 28	writeRegNum: 31		pc: 11\
+	Execute:		source1value: 2		source2value: 0		intToSignExted: 1	regNumToWrite: 16	pc: 28\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 0\
+	no WB\
+\
+11	for1tst:\
+	slt  $t0, $s0, $s3                      0 0 0 0 0 0 1 0 0 1 1 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 0 1 0 1 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	0  4  4  2  100  0  0  0 \
+	2  1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 11\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 28	regNumToWrite: 31	pc: 28\
+	Memory:			ResultValue: 3		branchPC: 1					writeBackReg: 16		pc: 28\
+	no WB\
+\
+11	for1tst:\
+	slt  $t0, $s0, $s3                      0 0 0 0 0 0 1 0 0 1 1 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 0 1 0 1 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	0  4  4  2  100  0  0  0 \
+	2  1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 19	sourceRegNum2: 16	intToSignExtend: 0	writeRegNum: 8		pc: 12\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 11\
+	Memory:			ResultValue: 1		branchPC: 28					writeBackReg: 31		pc: 28\
+	WriteBack:		writeReg: 16	writeValue: 3	BranchPC: -1\
+\
+\
+12	beq  $t0, $zero, exit1                  0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 0 1\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	0  4  4  2  100  0  0  0 \
+	3  1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 12\
+	Execute:		source1value: 3		source2value: 3		intToSignExted: 0	regNumToWrite: 8	pc: 12\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 11\
+	WriteBack:		writeReg: 31	writeValue: 1	BranchPC: -1\
+\
+\
+12	beq  $t0, $zero, exit1                  0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 0 1\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	0  4  4  2  100  0  0  0 \
+	3  1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 12\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 12\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 8		pc: 12\
+	no WB\
+\
+12	beq  $t0, $zero, exit1                  0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 0 1\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	0  4  4  2  100  0  0  0 \
+	3  1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 29	writeRegNum: 8		pc: 13\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 12\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 12\
+	WriteBack:		writeReg: 8	writeValue: 0	BranchPC: -1\
+\
+\
+13	addi $s1, $s0, -1                       0 0 1 0 0 0 1 0 0 0 0 1 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	0  4  4  2  100  0  0  0 \
+	3  1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 16	sourceRegNum2: 0	intToSignExtend: -1	writeRegNum: 17		pc: 14\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 29	regNumToWrite: 0	pc: 13\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 12\
+	no WB\
+\
+14	for2tst:\
+	slti $t0, $s1, 0                        0 0 1 0 1 0 1 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	0  4  4  2  100  0  0  0 \
+	3  1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 14\
+	Execute:		source1value: 3		source2value: 0		intToSignExted: -1	regNumToWrite: 17	pc: 14\
+	Memory:			ResultValue: 1		branchPC: 29					writeBackReg: 0		pc: 13\
+	no WB\
+\
+14	for2tst:\
+	slti $t0, $s1, 0                        0 0 1 0 1 0 1 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	0  4  4  2  100  0  0  0 \
+	3  1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 14\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 14\
+	Memory:			ResultValue: 2		branchPC: -1					writeBackReg: 17		pc: 14\
+	WriteBack:		writeReg: 0	writeValue: 0	BranchPC: 29\
+\
+\
+Pipeline Cleared!!\
+\
+29	exit1:\
+	lw $s0, 0($sp)                          1 0 0 0 1 1 1 1 1 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	0  4  4  2  100  0  0  0 \
+	3  1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 29	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 16		pc: 30\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 0\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 0\
+	no WB\
+\
+30	lw $s1, 4($sp)                          1 0 0 0 1 1 1 1 1 0 1 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	0  4  4  2  100  0  0  0 \
+	3  1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 29	sourceRegNum2: 0	intToSignExtend: 4	writeRegNum: 17		pc: 31\
+	Execute:		source1value: 236		source2value: 0		intToSignExted: 0	regNumToWrite: 16	pc: 30\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 0\
+	no WB\
+\
+31	lw $s2, 8($sp)                          1 0 0 0 1 1 1 1 1 0 1 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	0  4  4  2  100  0  0  0 \
+	3  1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 29	sourceRegNum2: 0	intToSignExtend: 8	writeRegNum: 18		pc: 32\
+	Execute:		source1value: 236		source2value: 0		intToSignExted: 4	regNumToWrite: 17	pc: 31\
+	Memory:			ResultValue: 236		branchPC: 0					writeBackReg: 16		pc: 30\
+	no WB\
+\
+32	lw $s3,12($sp)                          1 0 0 0 1 1 1 1 1 0 1 1 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	0  4  4  2  100  0  0  0 \
+	3  1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 29	sourceRegNum2: 0	intToSignExtend: 12	writeRegNum: 19		pc: 33\
+	Execute:		source1value: 236		source2value: 0		intToSignExted: 8	regNumToWrite: 18	pc: 32\
+	Memory:			ResultValue: 240		branchPC: 4					writeBackReg: 17		pc: 31\
+	WriteBack:		writeReg: 16	writeValue: 0	BranchPC: -1\
+\
+\
+33	lw $ra,16($sp)                          1 0 0 0 1 1 1 1 1 0 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	0  4  4  2  100  0  0  0 \
+	0  1  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 29	sourceRegNum2: 0	intToSignExtend: 16	writeRegNum: 31		pc: 34\
+	Execute:		source1value: 236		source2value: 0		intToSignExted: 12	regNumToWrite: 19	pc: 33\
+	Memory:			ResultValue: 244		branchPC: 8					writeBackReg: 18		pc: 32\
+	WriteBack:		writeReg: 17	writeValue: 0	BranchPC: -1\
+\
+\
+34	addi $sp,$sp, 20                        0 0 1 0 0 0 1 1 1 0 1 1 1 1 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0 1 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	0  4  4  2  100  0  0  0 \
+	0  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 29	sourceRegNum2: 0	intToSignExtend: 20	writeRegNum: 29		pc: 35\
+	Execute:		source1value: 236		source2value: 0		intToSignExted: 16	regNumToWrite: 31	pc: 34\
+	Memory:			ResultValue: 248		branchPC: 12					writeBackReg: 19		pc: 33\
+	WriteBack:		writeReg: 18	writeValue: 0	BranchPC: -1\
+\
+\
+35	jr $ra                                  0 0 0 0 0 0 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	0  4  4  2  100  0  0  0 \
+	0  0  0  3  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 35\
+	Execute:		source1value: 236		source2value: 0		intToSignExted: 20	regNumToWrite: 29	pc: 35\
+	Memory:			ResultValue: 252		branchPC: 16					writeBackReg: 31		pc: 34\
+	WriteBack:		writeReg: 19	writeValue: 0	BranchPC: -1\
+\
+\
+35	jr $ra                                  0 0 0 0 0 0 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	0  4  4  2  100  0  0  0 \
+	0  0  0  0  0  0  0  0 \
+	0  0  0  0  0  236  0  1 \
+\
+	Instruction Decode:	sourceRegNum1: 31	sourceRegNum2: 0	intToSignExtend: 0	writeRegNum: 0		pc: 36\
+	Execute:		source1value: 0		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 35\
+	Memory:			ResultValue: 256		branchPC: 20					writeBackReg: 29		pc: 35\
+	WriteBack:		writeReg: 31	writeValue: 2147483647	BranchPC: -1\
+\
+\
+36	swap:\
+	sll $t1, $a1, 2                         0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 0 1 0 0 1 0 0 0 1 0 0 0 0 0 0 0\
+\
+Registers:\
+	0  0  0  0  0  0  0  0 \
+	0  4  4  2  100  0  0  0 \
+	0  0  0  0  0  0  0  0 \
+	0  0  0  0  0  236  0  2147483647 \
+\
+	Instruction Decode:	sourceRegNum1: 0	sourceRegNum2: 5	intToSignExtend: 0	writeRegNum: 9		pc: 37\
+	Execute:		source1value: 2147483647		source2value: 0		intToSignExted: 0	regNumToWrite: 0	pc: 36\
+	Memory:			ResultValue: 0		branchPC: 0					writeBackReg: 0		pc: 35\
+	WriteBack:		writeReg: 29	writeValue: 256	BranchPC: -1\
+\
+\
+\
+\
+PROGRAM FINISHED...\
+\
+\
+Report!!!!:\
+--------------Total Overall----------------------\
+Total Instr in code:	45\
+Total Cycles:       	135\
+Total Bubbles:      	60\
+Total Instrs Exe:   	75\
+All Pipeline Clears:	4\
+Sum of Types:	    	71  differnece due to noOps at end of code before jr $ra\
+Overall average CPI:	1.8\
+\
+------------------R-Type-------------------------\
+R-Type Instructions:	23\
+R-Type Bubbles:     	24\
+R-Type Frequency:   	0.30666666666666664\
+\
+------------------I-Type-------------------------\
+I-Type Instructions:	43\
+I-Type Bubbles:     	39\
+I-Type Frequency:   	0.5733333333333334\
+\
+------------------J-Type-------------------------\
+J-Type Instructions:	5\
+J-Type Bubbles:     	0\
+J-Type Frequency:   	0.06666666666666667\
+\
+The Stack @ end:\
+ 1 2 100 0 3 5 52 92 31 82 12 29 61 45 72 57 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2147483647}
